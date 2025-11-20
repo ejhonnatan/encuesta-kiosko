@@ -3,7 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" />
-  <title>Encuesta ANM</title>
+  <title>Comedores ANI</title>
+
+  <!-- PWA TAGS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Comedores ANM">
+  <link rel="apple-touch-icon" href="icon-192.png">
+
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#ffffff">
 
   <style>
     html, body {
@@ -26,6 +35,7 @@
     }
   </style>
 </head>
+
 <body>
 
 <!-- IFRAME FULLSCREEN -->
@@ -37,16 +47,22 @@
 </iframe>
 
 <script>
-  // Escuchar mensaje de finalización
+  // Reiniciar automáticamente la encuesta cuando se envía
   window.addEventListener("message", function(event) {
     if (event.data.type === "form-submit") {
       setTimeout(() => {
-        // Reinicia la encuesta recargando el iframe
         const iframe = document.getElementById("tf-fullscreen");
-        iframe.src = iframe.src;
+        iframe.src = iframe.src; // recarga sólo el iframe
       }, 500);
     }
   });
+</script>
+
+<!-- Registrar Service Worker para PWA -->
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("/sw.js");
+  }
 </script>
 
 </body>
