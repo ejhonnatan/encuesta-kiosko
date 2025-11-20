@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Encuesta</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Encuesta ANM</title>
+
   <style>
     html, body {
       margin: 0;
@@ -11,13 +12,27 @@
       width: 100%;
       height: 100%;
       overflow: hidden;
+      background: #ffffff;
+    }
+
+    #typeform-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
     }
   </style>
 </head>
+
 <body>
 
-<div id="typeform-container" style="width:100%; height:100%;"></div>
+<div id="typeform-container"></div>
 
+<!-- SDK oficial de Typeform -->
 <script src="https://embed.typeform.com/next/embed.js"></script>
 
 <script>
@@ -28,10 +43,11 @@
     hideHeaders: true,
     hideFooter: true,
     opacity: 100,
+    fullscreen: true,
     onSubmit: function() {
       setTimeout(() => {
         window.location.reload();
-      }, 500);
+      }, 600);
     }
   });
 </script>
